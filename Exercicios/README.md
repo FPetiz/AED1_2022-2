@@ -1,3 +1,3 @@
 # Exercícios
 
-Pasta que arquivos de execícios ao longo da disciplina.
+Pasta de arquivos de execícios feitos ao longo da disciplina sem teor avaliativo.
