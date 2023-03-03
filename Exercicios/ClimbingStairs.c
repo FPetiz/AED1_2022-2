@@ -2,25 +2,17 @@
 
 int main()
 {
-    int steps, possibilidades = 0, restante;
+    int steps, i, possibilidades = 0, t1=0, t2=1;
 
     do {
         printf("\nNumero de degraus: ");            
         scanf("%d", &steps);
     } while (steps < 1 || steps > 45);
 
-    restante = steps;
-    while (restante > 0) {
-        if (restante == 1) {
-            possibilidades = possibilidades + 1;
-            restante = restante - 1;
-        } else if (restante == 2) {
-            possibilidades = possibilidades + 2;
-            restante = restante - 2;
-        } else {
-            restante = restante - 3;
-            possibilidades = possibilidades + 3;
-        }
+    for (i = 0; i < steps; i++) {
+        possibilidades = t1+t2;
+        t1 = t2;
+        t2 = possibilidades;
     }
 
     printf("\nNumero de possbilidades de subir: %d\n\n", possibilidades);
