@@ -8,79 +8,44 @@
     começo2 <= fim2
 */
 
-#include <stdio.h>
-#include <string.h>
-
-bool haveConflict(char ** evento1, int evento1Tamanho, char ** evento2, int evento2Tamanho);
-
-int main () {
-
-    int i, ev1Tam, ev2Tam;
-    char ev1[2];        
-    char ev2[2];
-
-    /*  
-        avaliar se o horario de começo do evento é menor que o do fim
-    */
-
-    for (i = 0; i < 2; i++) {
-        if (i == 0) {
-            do {
-                prinf("\nDigite o horario de inicio do evento 1: ");
-                gets(ev1[i]);
-            } while (strlen(ev1[i] != 5));
-        } else {
-            do {
-                prinf("\nDigite o horario de termino do evento 1: ");
-                gest(ev1[i]);
-            } while (strlen(ev1[i] != 5));
-        }
-    }
-    ev1Tam = strlen(ev1);
-
-    for (i = 0; i < 2; i++) {
-        if (i == 0) {
-            do {
-                prinf("\nDigite o horario de inicio do evento 2: ");
-                gets(ev2[i]);
-            } while (strlen(ev2[i] != 5));
-        } else {
-            do {
-                prinf("\nDigite o horario de termino do evento 2: ");
-                gets(ev2[i]);
-            } while (strlen(ev2[i] != 5));
-        }
-    }   
-    ev2Tam = strlen(ev2);
-
-    if (haveConflict(ev1, ev1Tam, ev2, ev2Tam)) {
-        printf("\nVerdadeiro!\n");
-    } else{
-        printf("\nFalso!\n");
-    }
-
-    return 0;
-}
-
-bool haveConflict(char ** evento1, int evento1Tamanho, char ** evento2, int evento2Tamanho) {
-
-/*
-    Tenho que dar um jeito de pegar os valores de fim de ev1 e começo de ev2 
-    ver se o ev2 é menor ou igual que ev1
-    isso não e a string toda, então teria de dar um jeito de fazer isso percorrendo os caracteres dessas posições e transformando em int para fazer os cálculos
-*/
+bool haveConflict(char ** event1, int event1Size, char ** event2, int event2Size){
     int i;
-    int length = strlen(evento1[1]);
-    for (i = 0; i < length; i++) {
-        
-    }
+    int hStart, mStart, hEnd1, mEnd1;
+    int hStart2, mStart2, hEnd, mEnd;
 
-    if (evento1[1] > evento2[0]) {   // se tem conflito o começo do evento 2 precisa ser menor que o final do evento 1
+    do {
+        do {
+            printf("\nDigite o horario de inicio do evento 1: ");
+            sscanf(event1[0],"%d:%d", &hStart,&mStart);
+        } while (strlen(event1[0]) != 5);
+        
+        do {
+            printf("\nDigite o horario de termino do evento 1: ");
+            sscanf(event1[1],"%d:%d", &hEnd1,&mEnd1);
+        } while (strlen(event1[1]) != 5);
+    } while ((hStart*60+mStart) > (hEnd1*60+mEnd1));
+
+    //event1Size = strlen(event1);
+    
+    do {
+        do {
+            printf("\nDigite o horario de inicio do evento 2: ");
+            sscanf(event2[0],"%d:%d", &hStart2,&mStart2);
+        } while (strlen(event2[0]) != 5);
+       
+        do {
+            printf("\nDigite o horario de termino do evento 2: ");
+            sscanf(event2[1],"%d:%d", &hEnd,&mEnd);
+        } while (strlen(event2[1]) != 5);
+    } while ((hStart2*60+mStart2) > (hEnd*60+mEnd));
+       
+    //event2Size = strlen(event2);
+
+    if ((hEnd1*60+mEnd1) >= (hStart2*60+mStart2)) {   
         return true;               
     } else {
         return false;
-    }
-
+    } 
 }
 
 /*
