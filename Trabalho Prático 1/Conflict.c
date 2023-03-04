@@ -1,11 +1,15 @@
-// evento1 = [começo1, fim1] e evento2 = [começo2, fim2].
-// conflito: quando um momeno está nos dois eventos
-
-/*  Restrições:
-    evento1Tamanho == evento2Tamanho == 2.
+/*  
+    2446. Determine if Two Events Have Conflict
     
-    começo1 <= fim1
-    começo2 <= fim2
+    You are given two arrays of strings that represent two inclusive events that happened on the same day, event1 and event2, where:
+
+    event1 = [startTime1, endTime1] and
+    event2 = [startTime2, endTime2].
+    Event times are valid 24 hours format in the form of HH:MM.
+
+    A conflict happens when two events have some non-empty intersection (i.e., some moment is common to both events).
+
+    Return true if there is a conflict between two events. Otherwise, return false.
 */
 
 bool haveConflict(char ** event1, int event1Size, char ** event2, int event2Size){
@@ -24,8 +28,6 @@ bool haveConflict(char ** event1, int event1Size, char ** event2, int event2Size
             sscanf(event1[1],"%d:%d", &hEnd1,&mEnd1);
         } while (strlen(event1[1]) != 5);
     } while ((hStart*60+mStart) > (hEnd1*60+mEnd1));
-
-    //event1Size = strlen(event1);
     
     do {
         do {
@@ -39,7 +41,6 @@ bool haveConflict(char ** event1, int event1Size, char ** event2, int event2Size
         } while (strlen(event2[1]) != 5);
     } while ((hStart2*60+mStart2) > (hEnd*60+mEnd));
        
-    //event2Size = strlen(event2);
 
     if ((hEnd1*60+mEnd1) >= (hStart2*60+mStart2)) {   
         return true;               
@@ -49,6 +50,11 @@ bool haveConflict(char ** event1, int event1Size, char ** event2, int event2Size
 }
 
 /*
-    Ponteiro para ponteiro:
-    pon1 armazena o endereço do pon2 que armazena o endereço de uma variável que guarda um valor
+    Do primeiro para o segundo:
+     - Passei as variáveis para inglês.
+     - Fiz direto no LeetCode, por isso não tem a main.
+     - Não funciona para horários onde o evento 2 é mais cedo que o evento 1.
+     - Não tem restrição para valor absurdo de horário, por exemplo:
+     o usuário não é impedido de inserir valores negativos ou acima de 24 para horas e de 59 mara minutos.
+     - Também, nenhum condicional no código corresponde a isto: evnet1.length == event2.length == 2.
 */
