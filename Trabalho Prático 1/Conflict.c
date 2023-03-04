@@ -28,6 +28,8 @@ bool haveConflict(char ** event1, int event1Size, char ** event2, int event2Size
             sscanf(event1[1],"%d:%d", &hEnd1,&mEnd1);
         } while (strlen(event1[1]) != 5);
     } while ((hStart*60+mStart) > (hEnd1*60+mEnd1));
+
+    //event1Size = strlen(event1);
     
     do {
         do {
@@ -41,19 +43,28 @@ bool haveConflict(char ** event1, int event1Size, char ** event2, int event2Size
         } while (strlen(event2[1]) != 5);
     } while ((hStart2*60+mStart2) > (hEnd*60+mEnd));
        
+    //event2Size = strlen(event2);
 
-    if ((hEnd1*60+mEnd1) >= (hStart2*60+mStart2)) {   
-        return true;               
+    if (hStart*60+mStart < hStart2*60+mStart2) {
+        if ((hEnd1*60+mEnd1) >= (hStart2*60+mStart2)) {   
+            return true;               
+        } else {
+            return false;
+        } 
+    } else if (hStart2*60+mStart2 < hStart*60+mStart) {
+        if ((hEnd*60+mEnd) >= (hStart*60+mStart)) {   
+            return true;               
+        } else {
+            return false;
+        } 
     } else {
-        return false;
-    } 
+        return true;
+    }
 }
 
 /*
-    Do primeiro para o segundo:
-     - Passei as variáveis para inglês.
+    Do segundo para o terceiro:
      - Fiz direto no LeetCode, por isso não tem a main.
-     - Não funciona para horários onde o evento 2 é mais cedo que o evento 1.
      - Não tem restrição para valor absurdo de horário, por exemplo:
      o usuário não é impedido de inserir valores negativos ou acima de 24 para horas e de 59 mara minutos.
      - Também, nenhum condicional no código corresponde a isto: evnet1.length == event2.length == 2.
