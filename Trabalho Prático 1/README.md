@@ -1,5 +1,5 @@
 #   Trabalho Prático 1   
-   Fernanda Cardoso Petiz - 20200269   
+   Fernanda Cardoso Petiz   
    
     2446. Determine if Two Events Have Conflict
    
@@ -21,4 +21,4 @@
     - As correções foram feitas direto no LeetCode, por isso não tem a main aqui;
     - Nenhum condicional no código corresponde à seguinte restrição: evnet1.length == event2.length == 2.
     
-   Link para o vídeo no Drive: 
+   Link para o vídeo no Drive: https://drive.google.com/drive/folders/1sjUyjrIo1_JpC1SXN710_k2n5Jqc3Wny 
