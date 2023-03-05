@@ -7,4 +7,3 @@
     Pastas:
     Exercícios -> Refrente aos exercícios feitos ao longo da disciplina
     Trabalho Prático i -> Cada trabalho prático do semestre entra em uma dessas seguindo a enumeração
-    
